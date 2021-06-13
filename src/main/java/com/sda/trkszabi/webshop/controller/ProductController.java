@@ -1,8 +1,9 @@
 package com.sda.trkszabi.webshop.controller;
 
+import com.sda.trkszabi.webshop.error.ResourceNotFoundException;
 import com.sda.trkszabi.webshop.model.Product;
 import com.sda.trkszabi.webshop.service.ProductService;
-import javassist.NotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +25,12 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public Product getProductById(@PathVariable(value = "id") Long productId) {
+    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") Long productId) throws ResourceNotFoundException {
         Optional<Product> product = productService.findById(productId);
         if (product.isPresent()) {
-            return product.get();
+            return ResponseEntity.ok(product.get());
         }
-        throw new IllegalArgumentException();
+        throw new ResourceNotFoundException("Product with id: " + productId + " was not found!");
     }
 
 
