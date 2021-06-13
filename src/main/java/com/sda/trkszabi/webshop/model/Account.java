@@ -2,22 +2,26 @@ package com.sda.trkszabi.webshop.model;
 
 import javax.persistence.*;
 import java.util.Date;
+
 @Entity
-@Table (name= "account")  /// sa fim expliciti
+@Table(name = "account")  /// sa fim expliciti
 public class Account {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    @Column(name="billing_address")
+    @Column(name = "login")
+    private String login;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "billing_address")
     private String billingAddress;
-    @Column(name="is_closed")
-    private boolean isClosed;
-    @Column(name="creation_date")
+    @Column(name = "is_closed")
+    private Boolean isClosed;
+    @Column(name = "creation_date")
     private Date creationDate;
-    @Column(name="closed_date")
+    @Column(name = "closed_date")
     private Date closedDate;
-
 
 
     public Long getId() {
@@ -36,11 +40,11 @@ public class Account {
         this.billingAddress = billingAddress;
     }
 
-    public boolean isClosed() {
+    public Boolean isClosed() {
         return isClosed;
     }
 
-    public void setClosed(boolean closed) {
+    public void setClosed(Boolean closed) {
         isClosed = closed;
     }
 
@@ -58,6 +62,22 @@ public class Account {
 
     public void setClosedDate(Date closedDate) {
         this.closedDate = closedDate;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
