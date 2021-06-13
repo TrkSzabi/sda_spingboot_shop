@@ -1,6 +1,7 @@
 package com.sda.trkszabi.webshop.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "product")
@@ -10,15 +11,27 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @NotBlank
+    @Size(min = 5, max = 100)
     @Column(name = "name")
     private String name;
+
+    @NotBlank
+    @Size(min = 5,max = 15000)
     @Column(name = "description")
     private String description;
+
+    @Positive
     @Column(name = "price")
     private Double price;
+
+    @NotBlank
+    @Pattern(regexp = "[A-Z][A-Z][A-Z]")
     @Column(name = "currency")
     private String currency;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "category")
     private ProductCategory category;
