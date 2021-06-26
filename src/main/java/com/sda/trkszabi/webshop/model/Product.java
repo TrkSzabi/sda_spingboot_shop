@@ -36,7 +36,7 @@ public class Product {
     @Column(name = "category")
     private ProductCategory category;
 
-    public Product(String name, String description, double price, String currency, ProductCategory category) {
+    public Product(String name, String description, Double price, String currency, ProductCategory category) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -71,7 +71,7 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
