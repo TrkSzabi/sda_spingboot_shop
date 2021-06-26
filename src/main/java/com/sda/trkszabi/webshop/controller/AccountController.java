@@ -1,12 +1,12 @@
 package com.sda.trkszabi.webshop.controller;
 
 import com.sda.trkszabi.webshop.model.Account;
+import com.sda.trkszabi.webshop.model.Product;
 import com.sda.trkszabi.webshop.service.AccountService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -25,6 +25,11 @@ public class AccountController {
         }
         accountService.createAccount(account);
         return ResponseEntity.ok("Account created!");
+    }
+
+    @GetMapping("/accounts")
+    public List<Account> getAllProducts() {
+        return accountService.findAll();
     }
 
 }
