@@ -23,7 +23,7 @@ public class UserRegistrationDTO {
     @Email
     private String email;
     @AssertTrue
-    private Boolean therms;
+    private Boolean terms;
 
     public String getLogin() {
         return login;
@@ -57,11 +57,11 @@ public class UserRegistrationDTO {
         this.email = email;
     }
 
-    public Boolean getTherms() {
-        return therms;
+    public Boolean getTerms() {
+        return terms;
     }
 
-    public void setTherms(Boolean therms) {
-        this.therms = therms;
+    public void setTerms(Boolean terms) {
+        this.terms = terms;
     }
 }
