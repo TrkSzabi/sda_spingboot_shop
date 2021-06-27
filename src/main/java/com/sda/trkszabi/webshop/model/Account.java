@@ -56,7 +56,7 @@ public class Account {
         this.creationDate = creationDate;
     }
 
-    public Date getClosedDate() {
+    public Date getClosedDate(Date date) {
         return closedDate;
     }
 
