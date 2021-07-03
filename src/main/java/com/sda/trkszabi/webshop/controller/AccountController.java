@@ -56,23 +56,19 @@ public class AccountController {
     }
 
 
-    @GetMapping("/accounts")
-    public List<Account> getAllProducts() {
-        return accountService.findAll();
-    }
-
     @PostMapping("/login")
     @CrossOrigin
     public Boolean login(@RequestBody Account account) {
         UserDetails userDetails = accountService.loadUserByUsername(account.getLogin());
         if (userDetails != null &&
                 bCryptPasswordEncoder.matches(
-                        userDetails.getPassword(),
-                        bCryptPasswordEncoder.encode(account.getPassword()))) {
+                        account.getPassword(),
+                        userDetails.getPassword()
+                )
+        ) {
             return true;
         }
-        // TO BE FIXED
-        return true;
+        return false;
     }
 
     @PostMapping("/user")
